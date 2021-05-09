@@ -72,6 +72,7 @@ class AddNewFruitActivity : AppCompatActivity() {
 
                 requestPermissions(permission, PERMISSION_CODE_READ)
                 requestPermissions(permissionCoarse, PERMISSION_CODE_WRITE)
+                checkPermissionForImage()
             } else {
                 pickImageFromGallery()
             }
