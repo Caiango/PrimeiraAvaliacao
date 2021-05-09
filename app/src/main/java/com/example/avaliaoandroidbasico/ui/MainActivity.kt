@@ -91,11 +91,11 @@ class MainActivity : AppCompatActivity(), FruitAdapter.onClickListener {
         Log.i("onSavedInstance", "onSavedInstance")
     }
 
-//    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-//        super.onRestoreInstanceState(savedInstanceState)
-//        val saved = savedInstanceState.getParcelableArrayList<Frutas>(ARRAY_LIST)
-//        Log.i("onRestoreInstanceState", saved.toString())
-//    }
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val saved = savedInstanceState.getParcelableArrayList<Frutas>(Constants.ARRAY_LIST)
+        Log.i("onRestoreInstanceState", saved.toString())
+    }
 
     override fun onItemClick(item: Frutas, position: Int) {
         callFruitDetail(item)
