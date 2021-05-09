@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">AvaliaçãoAndroidBasico</string>
+    <string name="nova_fruta">NOVA FRUTA</string>
+    <string name="beneficios_da_fruta">Benefícios da Fruta</string>
+    <string name="inserir_foto">INSERIR FOTO</string>
+    <string name="concluir">CONCLUIR</string>
+    <string name="nome_da_fruta">Nome da Fruta</string>
+    <string name="edit_error">Preencha com valores reais e escolha uma foto!</string>
+    <string name="descricao_da_fruta">Descrição da Fruta</string>
+    <string name="frutas">FRUTAS</string>
+    <string name="remover">REMOVER</string>
+    <string name="fruta_selecionada">FRUTA SELECIONADA</string>
+</resources>
