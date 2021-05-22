@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AvaliaçãoAndroidBasico</string>
+    <string name="nova_fruta">NEW FRUIT</string>
+    <string name="beneficios_da_fruta">Fruits Benefits</string>
+    <string name="inserir_foto">Insert Photo</string>
+    <string name="concluir">Conclude</string>
+    <string name="nome_da_fruta">Fruit Name</string>
+    <string name="edit_error">Use real values</string>
+    <string name="descricao_da_fruta">Fruit Description</string>
+    <string name="frutas">FRUITS</string>
+    <string name="remover">REMOVE</string>
+    <string name="fruta_selecionada">SELECTED FRUIT</string>
+    <string name="remover_fruta">Do you want to remove this Fruit?</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
+    <string name="cancelado">Cancealed</string>
+    <string name="resource">android.resource://</string>
+    <string name="laranja">Orange</string>
+    <string name="adicionar_fruta">Add Fruit</string>
+    <string name="beneficio1">Reduce Bad Colestherol levels. It has a lot of Vitamin C. It has flavonoides, betacaroteno and fibras.</string>
+    <string name="beneficio2">Previne cardio deseases. Its wealthy. Causes good humor.</string>
+</resources>

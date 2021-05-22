@@ -10,4 +10,13 @@
     <string name="frutas">FRUTAS</string>
     <string name="remover">REMOVER</string>
     <string name="fruta_selecionada">FRUTA SELECIONADA</string>
+    <string name="remover_fruta">Deseja Excluir a Fruta?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="cancelado">CANCELADO</string>
+    <string name="resource">android.resource://</string>
+    <string name="laranja">Laranja</string>
+    <string name="adicionar_fruta">Adicionar Fruta</string>
+    <string name="beneficio1">Diminui os níveis de colesterol ruim no organismo. Rica em vitamina C. Contém flavonoides, betacaroteno e fibras.</string>
+    <string name="beneficio2">Previne as doenças cardiovasculares. Faz bem para o sistema digestivo. Melhora o humor.</string>
 </resources>

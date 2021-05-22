@@ -68,13 +68,13 @@ class FruitAdapter(var clickListener: onClickListener, context: Context) :
 
     fun remove(position: Int) {
         val dialog = AlertDialog.Builder(mContext)
-        dialog.setTitle("Deseja Excluir a Fruta?")
-        dialog.setPositiveButton("Sim") { _: DialogInterface, _: Int ->
+        dialog.setTitle(mContext.getString(R.string.remover_fruta))
+        dialog.setPositiveButton(mContext.getString(R.string.sim)) { _: DialogInterface, _: Int ->
             fruitList.removeAt(position)
             notifyDataSetChanged()
         }
-        dialog.setNegativeButton("Não") { _: DialogInterface, _: Int ->
-            Toast.makeText(mContext, "CANCELADO", Toast.LENGTH_SHORT).show()
+        dialog.setNegativeButton(mContext.getString(R.string.nao)) { _: DialogInterface, _: Int ->
+            Toast.makeText(mContext, mContext.getString(R.string.cancelado), Toast.LENGTH_SHORT).show()
             notifyDataSetChanged()
         }
         dialog.show()

@@ -37,22 +37,22 @@ class MainActivity : AppCompatActivity(), FruitAdapter.onClickListener {
             Log.i("onCreate", saved.toString())
         } else {
             var img1 = Uri.parse(
-                "android.resource://" + R::class.java.getPackage()
+                getString(R.string.resource) + R::class.java.getPackage()
                     .getName() + "/" + R.mipmap.orange_image
             ).toString()
             var img2 = Uri.parse(
-                "android.resource://" + R::class.java.getPackage()
+                getString(R.string.resource) + R::class.java.getPackage()
                     .getName() + "/" + R.mipmap.ic_banana_foreground
             ).toString()
             var Fruta1 = Frutas(
-                "Laranja",
+                getString(R.string.laranja),
                 img1,
-                "Diminui os níveis de colesterol ruim no organismo. \nRica em vitamina C. \nContém flavonoides, betacaroteno e fibras."
+                getString(R.string.beneficio1)
             )
             var Fruta2 = Frutas(
                 "Banana",
                 img2,
-                "Previne as doenças cardiovasculares. \nFaz bem para o sistema digestivo. \nMelhora o humor."
+                getString(R.string.beneficio2)
             )
             arrayFrutas.add(Fruta1)
             arrayFrutas.add(Fruta2)
