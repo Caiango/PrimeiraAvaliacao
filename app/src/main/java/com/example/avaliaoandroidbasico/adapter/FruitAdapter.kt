@@ -74,8 +74,8 @@ class FruitAdapter(var clickListener: onClickListener, context: Context) :
             notifyDataSetChanged()
         }
         dialog.setNegativeButton("Não") { _: DialogInterface, _: Int ->
-            notifyDataSetChanged()
             Toast.makeText(mContext, "CANCELADO", Toast.LENGTH_SHORT).show()
+            notifyDataSetChanged()
         }
         dialog.show()
 
@@ -83,7 +83,7 @@ class FruitAdapter(var clickListener: onClickListener, context: Context) :
 
     fun swap(initPos: Int, targetPos: Int) {
         Collections.swap(fruitList, initPos, targetPos)
-        notifyDataSetChanged()
+        notifyItemMoved(initPos, targetPos)
     }
 
     interface onClickListener {
