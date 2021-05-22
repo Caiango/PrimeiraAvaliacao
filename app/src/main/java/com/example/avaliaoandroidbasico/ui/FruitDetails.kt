@@ -1,8 +1,11 @@
 package com.example.avaliaoandroidbasico.ui
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import com.example.avaliaoandroidbasico.constants.Constants
@@ -20,7 +23,6 @@ class FruitDetails : AppCompatActivity() {
 
         val bundle = intent
         fruit = bundle.getParcelableExtra(Constants.SELECTED_FRUIT)!!
-
         setupUI()
 
     }
@@ -31,10 +33,19 @@ class FruitDetails : AppCompatActivity() {
         Picasso.get().load(fruit.foto).into(binding.selFruitImg)
 
         binding.button.setOnClickListener {
-            val retorno = Intent()
-            retorno.putExtra(Constants.SELECTED_FRUIT_FROM_RESULT, fruit)
-            setResult(Activity.RESULT_OK, retorno)
-            finish()
+            val dialog = AlertDialog.Builder(this)
+            dialog.setTitle("Deseja Excluir a Fruta?")
+            dialog.setPositiveButton("Sim") { _: DialogInterface, _: Int ->
+                val retorno = Intent()
+                retorno.putExtra(Constants.SELECTED_FRUIT_FROM_RESULT, fruit)
+                setResult(Activity.RESULT_OK, retorno)
+                finish()
+            }
+            dialog.setNegativeButton("Não") { _: DialogInterface, _: Int ->
+                Toast.makeText(this, "CANCELADO", Toast.LENGTH_SHORT).show()
+            }
+            dialog.show()
+
         }
 
     }

@@ -1,16 +1,21 @@
 package com.example.avaliaoandroidbasico.ui
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.avaliaoandroidbasico.R
 import com.example.avaliaoandroidbasico.adapter.FruitAdapter
 import com.example.avaliaoandroidbasico.constants.Constants
 import com.example.avaliaoandroidbasico.databinding.ActivityMainBinding
+import com.example.avaliaoandroidbasico.helper.ItemHelper
 import com.example.avaliaoandroidbasico.model.Frutas
 
 
@@ -18,7 +23,7 @@ class MainActivity : AppCompatActivity(), FruitAdapter.onClickListener {
 
     private var arrayFrutas = ArrayList<Frutas>()
     private lateinit var binding: ActivityMainBinding
-    private var adapter = FruitAdapter(this)
+    private var adapter = FruitAdapter(this, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,9 +83,12 @@ class MainActivity : AppCompatActivity(), FruitAdapter.onClickListener {
         binding.rvFruits.layoutManager = LinearLayoutManager(applicationContext)
         binding.rvFruits.setHasFixedSize(true)
         binding.rvFruits.adapter = adapter
+        val itemTouch = ItemTouchHelper(ItemHelper(adapter))
+        itemTouch.attachToRecyclerView(binding.rvFruits)
 
         binding.floatingActionButton.setOnClickListener {
             val intent = Intent(this, AddNewFruitActivity::class.java)
+            intent.putParcelableArrayListExtra(Constants.ARRAY_LIST, arrayFrutas)
             startActivityForResult(intent, Constants.REQUEST_CODE_RESULT_1)
         }
     }

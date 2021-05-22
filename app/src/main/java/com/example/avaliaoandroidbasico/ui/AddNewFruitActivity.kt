@@ -1,10 +1,15 @@
 package com.example.avaliaoandroidbasico.ui
 
 import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.avaliaoandroidbasico.R
@@ -14,6 +19,7 @@ import com.example.avaliaoandroidbasico.model.Frutas
 
 class AddNewFruitActivity : AppCompatActivity() {
     private lateinit var fruit: Frutas
+    private var arrayFrutas = ArrayList<Frutas>()
     private lateinit var binding: ActivityAddNewFruitBinding
 
     companion object {
@@ -27,31 +33,61 @@ class AddNewFruitActivity : AppCompatActivity() {
         binding = ActivityAddNewFruitBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val bundle = intent
+        arrayFrutas = bundle.getParcelableArrayListExtra(Constants.ARRAY_LIST)!!
         fruit = Frutas(null, null, null)
         setupUI()
 
 
     }
 
-    private fun setupUI() {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_add, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
 
-        binding.btnConclude.setOnClickListener {
-            val nome = binding.editNome.text.toString()
-            val desc = binding.editDesc.text.toString()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.add_fruit -> {
+                val nome = binding.editNome.text.toString()
+                val desc = binding.editDesc.text.toString()
 
-            fruit.nome = nome
-            fruit.desc = desc
+                fruit.nome = nome
+                fruit.desc = desc
 
-            if (fruit.nome.equals("") || fruit.desc.equals("") || fruit.foto.isNullOrBlank()) {
-                binding.editNome.error = getString(R.string.edit_error)
-            } else {
-                val retorno = Intent()
-                retorno.putExtra(Constants.NEW_FRUIT, fruit)
-                setResult(Activity.RESULT_OK, retorno)
-                finish()
+                if (fruit.nome.equals("") || fruit.desc.equals("") || fruit.foto.isNullOrBlank()) {
+                    binding.editNome.error = getString(R.string.edit_error)
+                } else {
+                    if (!checkFruit(fruit)) {
+                        val retorno = Intent()
+                        retorno.putExtra(Constants.NEW_FRUIT, fruit)
+                        setResult(Activity.RESULT_OK, retorno)
+                        finish()
+                    } else {
+                        val dialog = AlertDialog.Builder(this)
+                        dialog.setTitle("Fruta já existente!")
+                        dialog.setNegativeButton("OK") { _: DialogInterface, _: Int ->
+                        }
+                        dialog.show()
+                    }
+                }
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
             }
         }
+        return true
+    }
 
+    private fun checkFruit(newFruta: Frutas): Boolean {
+        var returnal = false
+        arrayFrutas.forEach { fruta ->
+            returnal = newFruta.nome == fruta.nome
+        }
+        return returnal
+    }
+
+    private fun setupUI() {
 
         binding.btnFoto.setOnClickListener {
             checkPermissionForImage()
