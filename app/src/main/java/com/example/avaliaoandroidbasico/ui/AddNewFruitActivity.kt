@@ -82,7 +82,7 @@ class AddNewFruitActivity : AppCompatActivity() {
     private fun checkFruit(newFruta: Frutas): Boolean {
         var returnal = false
         arrayFrutas.forEach { fruta ->
-            returnal = newFruta.nome == fruta.nome
+            returnal = newFruta.nome.equals(fruta.nome, ignoreCase = true)
         }
         return returnal
     }
